@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Home, Chat, Login, NaviBar } from "./component";
+import React from "react";
+import { Home, Chat, Login, NaviBar, Redux } from "./component";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 const App = () => {
   return (
     <div>
@@ -12,6 +11,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/redux" element={<Redux />} />
         </Routes>
       </Router>
     </div>

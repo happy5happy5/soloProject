@@ -8,6 +8,7 @@ const App = () => {
       <Router>
         <NaviBar></NaviBar>
         <Routes>
+          {/* you can use useNavigate react-router-dom@6 style inside of <Router> component */}
           <Route path="/" element={<Home />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/login" element={<Login />} />

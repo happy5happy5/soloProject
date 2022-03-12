@@ -1,3 +1,5 @@
 # react-template
-Start react project without useless file!
-happy5happy5
+
+After 2 weeks Project::
+Looking back over my weaknesses
+happy5happy5 hacking

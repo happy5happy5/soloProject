@@ -1,6 +1,7 @@
 import create from "Zustand";
 import { persist } from "zustand/middleware";
 
+//useStore이름 마음대로입니다. 원하는걸로 바꾸고 여러개 만드셔도됩니다.
 const useStore = create(
   persist(
     (set) => ({

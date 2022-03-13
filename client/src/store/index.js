@@ -1,8 +1,9 @@
+//리덕스
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 // import storageLocal from "redux-persist/lib/storage"; //로컬에 저장
 import storageSession from "redux-persist/lib/storage/session"; //세션에 저장
-import count from "./Count";
+import count from "./Count-redux";
 
 const persistConfig = {
   key: "root",

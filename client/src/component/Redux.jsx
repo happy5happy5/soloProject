@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 export function Redux() {
   const 꺼내온거 = useSelector((state) => state);
   const dispatch = useDispatch(); //함수 변경할때 사용하는것
-  console.log(꺼내온거);
   return (
     <div>
       Redux

@@ -1,17 +1,43 @@
 import React, { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
-import ioClient from "socket.io-client";
+import { io } from "socket.io-client";
 import chatStore from "../store/Chat-zustand";
+
+let socket;
 const Chat = () => {
-  const { chatMsgList, addMsg } = chatStore();
   const [name, setName] = useState("");
-  function handleMsgInput(e) {
+  const { chatId, chatMsgList, addMsg, addId, removeId } = chatStore();
+
+  useEffect(() => {
+    socket = io("http://localhost:80", {
+      reconnectionDelayMax: 10000,
+    });
+    socket.on("connect", () => {
+      console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+    });
+  }, []);
+  useEffect(() => {
+    socket.on("enter", (x) => {
+      addMsg("admin", x);
+      //
+    });
+    socket.on("message", (x) => {
+      addMsg(x.name, x.msg);
+    });
+  }, [socket]);
+
+  const handleMsgInput = useCallback((e) => {
     if (e.key === "Enter") {
       if (name === "") return alert("이름 넣어라 오류난다");
       addMsg(name, e.target.value);
+      if (socket) {
+        socket.emit("message", { name: name, msg: e.target.value });
+        console.log(1);
+      }
       e.target.value = "";
     }
-  }
+  });
+
   return (
     <div>
       <div>

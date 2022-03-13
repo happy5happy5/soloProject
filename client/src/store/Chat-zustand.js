@@ -5,10 +5,21 @@ import { persist } from "zustand/middleware";
 const chatStore = create(
   persist(
     (set) => ({
+      chatId: "",
       chatMsgList: [],
       addMsg(name, msg) {
         set((state) => ({
           chatMsgList: [...state.chatMsgList, { name, msg }],
+        }));
+      },
+      addId(id) {
+        set((state) => ({
+          chatId: (state.chatId = id),
+        }));
+      },
+      removeId() {
+        set((state) => ({
+          chatId: (state.chatId = ""),
         }));
       },
     }),

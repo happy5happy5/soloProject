@@ -4,19 +4,24 @@ const PORT = process.env.SERVERPORT || 80;
 const Server = require("http").createServer(app);
 const io = require("socket.io")(Server, {
   cors: {
-    origin: [`http://localhost`],
+    origin: [`http://localhost:3000`],
     credentials: true,
   },
 });
 
-io.on("connection", (socket) => {
-  console.log("소켓 연결 완료");
-  console.log(socket.id);
+io.on("connect", (socket) => {
+  console.log("Connected :: %s", socket.id);
 
+  io.emit("enter", `${socket.id} has enter.`);
+  socket.on("message", (x) => {
+    socket.broadcast.emit("message", x);
+  });
   socket.on("disconnect", () => {
-    console.log("Disconnecting from server");
+    console.log("DisConnected");
+    socket.broadcast.emit("out", `${socket.id} has left.`);
   });
 });
+
 Server.listen(PORT, () => {
   console.log("Server running on port:: %s", PORT);
 });

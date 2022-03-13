@@ -4,7 +4,7 @@ export function Zustand() {
   const { count, 증가, 감소, 곱하기2, 나누기2, 리셋 } = useStore();
   return (
     <div>
-      Zustand
+      성경갓 Zustand
       <div>
         <button onClick={() => 증가()}>증가</button>
         <button onClick={() => 감소()}>감소</button>

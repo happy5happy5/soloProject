@@ -9,7 +9,7 @@ const Chat = () => {
   const { chatId, chatMsgList, addMsg, addId, removeId } = chatStore();
 
   useEffect(() => {
-    socket = io("http://localhost:80", {
+    socket = io("http://localhost:4000", {
       reconnectionDelayMax: 10000,
     });
     socket.on("connect", () => {

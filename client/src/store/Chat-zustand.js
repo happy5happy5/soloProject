@@ -1,4 +1,4 @@
-import create from "Zustand";
+import create from "zustand";
 import { persist } from "zustand/middleware";
 
 //useStore이름 마음대로입니다. 원하는걸로 바꾸고 여러개 만드셔도됩니다.

@@ -13,26 +13,29 @@ const Chat = () => {
       reconnectionDelayMax: 10000,
     });
     socket.on("connect", () => {
-      console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-    });
-  }, []);
-  useEffect(() => {
-    socket.on("enter", (x) => {
-      addMsg("admin", x);
-      //
+      console.log(socket.id);
     });
     socket.on("message", (x) => {
       addMsg(x.name, x.msg);
     });
-  }, [socket]);
+    socket.on("enter", (x) => {
+      addMsg("admin", x);
+    });
+    socket.on("out", (x) => {
+      addMsg("admin", x);
+    });
+  }, []);
+  // useEffect(() => {
+  //   socket.emit("disconnect", () => {});
+  // }, [window.location.pathname]);
 
   const handleMsgInput = useCallback((e) => {
+    e.preventDefault();
     if (e.key === "Enter") {
       if (name === "") return alert("이름 넣어라 오류난다");
       addMsg(name, e.target.value);
       if (socket) {
         socket.emit("message", { name: name, msg: e.target.value });
-        console.log(1);
       }
       e.target.value = "";
     }

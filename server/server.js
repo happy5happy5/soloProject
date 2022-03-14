@@ -12,7 +12,7 @@ const io = require("socket.io")(Server, {
 io.on("connect", (socket) => {
   console.log("Connected :: %s", socket.id);
 
-  io.emit("enter", `${socket.id} has enter.`);
+  socket.broadcast.emit("enter", `${socket.id} has enter.`);
   socket.on("message", (x) => {
     socket.broadcast.emit("message", x);
   });

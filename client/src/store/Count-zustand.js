@@ -25,7 +25,7 @@ const useStore = create(
     {
       name: "count in session u can ckeck via window.localStorage",
       getStorage: () => sessionStorage, //세션에 저장
-      //   getStorage: () => localStorage, //로컬에 저장
+      //getStorage: () => localStorage, //로컬에 저장
     }
   )
 );

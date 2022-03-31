@@ -15,6 +15,7 @@ export const NaviBar = () => {
             else if (menuIdx === 2) navigate("/login");
             else if (menuIdx === 3) navigate("/redux");
             else if (menuIdx === 4) navigate("/zustand");
+            else if (menuIdx === 5) navigate("/kakao");
             else navigate("/");
           }}
         >
@@ -24,4 +25,4 @@ export const NaviBar = () => {
     </div>
   );
 };
-const menuNameList = ["Main", "Chat", "Login", "Redux", "Zustand"];
+const menuNameList = ["Main", "Chat", "Login", "Redux", "Zustand", "Kakao"];
